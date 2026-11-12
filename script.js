@@ -1,4 +1,4 @@
-
+-
 // ==========================
 // CLOCKS
 // ==========================
@@ -139,7 +139,7 @@ document.getElementById("attestation")
 // COPY NOTE
 // ==========================
 
-copyBtn.addEventListener("click", async () => {
+copyNoteBtn.addEventListener("click", async () => {
 
     const spokeWith = document.getElementById("spokeWith");
     const otherRelationship = document.getElementById("otherRelationship");
