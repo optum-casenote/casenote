@@ -488,16 +488,11 @@ if (copyStandardBtn) {
             return;
         }
 
-        const note = `CALLER'S NAME:
-${caller.value}
-RELATIONSHIP TO PATIENT / TITLE:
-${relationship.value}
-MEDICATION:
-${medication.value}
-ISSUE / REASON FOR CALL:
-${issue.value}
-RESOLUTION / OUTCOME:
-${resolution.value}`;
+      const note = `Caller: ${caller.value}
+Relationship/Title: ${relationship.value}
+Medication: ${medication.value}
+Issue: ${issue.value}
+Resolution: ${resolution.value}`;
 
         try {
 
