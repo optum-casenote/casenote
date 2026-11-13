@@ -139,7 +139,7 @@ document.getElementById("attestation")
 // COPY NOTE
 // ==========================
 
-copyNoteBtn.addEventListener("click", async () => {
+copyBtn.addEventListener("click", async () => {
 
     const spokeWith = document.getElementById("spokeWith");
     const otherRelationship = document.getElementById("otherRelationship");
