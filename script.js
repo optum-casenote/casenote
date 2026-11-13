@@ -147,9 +147,9 @@ copyNoteBtn.addEventListener("click", async () => {
     const mdOfficeHours = document.getElementById("mdOfficeHours");
     const punr = document.getElementById("punr");
     const orderNumber = document.getElementById("orderNumber");
-    const medicationName = document.getElementById("medicationName");
-    const medicationCost = document.getElementById("medicationCost");
-    const deliveryDate = document.getElementById("deliveryDate");
+   const medicationName = document.getElementById("medicationName");
+const medicationCost = document.getElementById("medicationCost");
+const deliveryDate = document.getElementById("deliveryDate");
     const copay = document.getElementById("copay");
     const obeNeeded = document.getElementById("obeNeeded");
     const activeObe = document.getElementById("activeObe");
@@ -161,6 +161,7 @@ copyNoteBtn.addEventListener("click", async () => {
     const restrictedState = document.getElementById("restrictedState");
     const shippingMethod = document.getElementById("shippingMethod");
     const otherShippingMethod = document.getElementById("otherShippingMethod");
+    const remarks = document.getElementById("remarks");
 
     // Required Validation
 
@@ -241,10 +242,25 @@ copyNoteBtn.addEventListener("click", async () => {
     note += `PUNR: ${punr.value}\n`;
 
     if (orderNumber.value)
-        note += `Order Number: ${orderNumber.value}\n`;
+    note += `Order Number: ${orderNumber.value}\n`;
 
-    if (deliveryDate.value)
-        note += `Delivery Date: ${deliveryDate.value}\n`;
+    if (!medicationName.value.trim()) {
+    alert("Medication Name is required.");
+    return;
+}
+    if (!medicationCost.value.trim()) {
+    alert("Medication Cost is required.");
+    return;
+}
+
+if (medicationName.value)
+    note += `Medication Name: ${medicationName.value}\n`;
+
+if (medicationCost.value)
+    note += `Medication Cost: ${medicationCost.value}\n`;
+
+if (deliveryDate.value)
+    note += `Delivery Date: ${deliveryDate.value}\n`;
 
     if (copay.value)
         note += `Copay / AR Balance: ${copay.value}\n`;
@@ -265,10 +281,13 @@ copyNoteBtn.addEventListener("click", async () => {
         note += `Same MD On Rx: ${sameMd.value}\n`;
 
     if (shippingAddress.value)
-        note += `Shipping Address: ${shippingAddress.value}\n`;
+    note += `Shipping Address: ${shippingAddress.value}\n`;
 
-    if (growthHormone.value)
-        note += `Growth Hormone Medication: ${growthHormone.value}\n`;
+if (remarks.value)
+    note += `Remarks: ${remarks.value}\n`;
+
+if (growthHormone.value)
+    note += `Growth Hormone Medication: ${growthHormone.value}\n`;
 
     if (restrictedState.value)
         note += `Shipping State CO/ID/MN/NV/RI/WV: ${restrictedState.value}\n`;
@@ -389,6 +408,9 @@ document.getElementById("clearBtn")
     document.getElementById("mdOfficeHours").value = "";
     document.getElementById("punr").selectedIndex = 0;
     document.getElementById("orderNumber").value = "";
+    document.getElementById("medicationName").value = "";
+document.getElementById("medicationCost").value = "";
+document.getElementById("remarks").value = "";
     document.getElementById("deliveryDate").value = "";
     document.getElementById("copay").value = "";
     document.getElementById("obeNeeded").selectedIndex = 0;
@@ -534,126 +556,4 @@ document
 
 });
 
-// ==========================
-// STANDARD NOTE
-// ==========================
 
-const copyStandardBtn =
-    document.getElementById("copyStandardBtn");
-
-if (copyStandardBtn) {
-
-    copyStandardBtn.addEventListener("click", async () => {
-
-        const caller =
-            document.getElementById("stdCaller");
-
-        const relationship =
-            document.getElementById("stdRelationship");
-
-        const medication =
-            document.getElementById("stdMedication");
-
-        const issue =
-            document.getElementById("stdIssue");
-
-        const resolution =
-            document.getElementById("stdResolution");
-
-        if (!caller.value.trim()) {
-            alert("Caller's Name is required.");
-            return;
-        }
-
-        if (!relationship.value.trim()) {
-            alert("Relationship / Title is required.");
-            return;
-        }
-
-        if (!medication.value.trim()) {
-            alert("Medication is required.");
-            return;
-        }
-
-        if (!issue.value.trim()) {
-            alert("Issue / Reason for Call is required.");
-            return;
-        }
-
-        if (!resolution.value.trim()) {
-            alert("Resolution / Outcome is required.");
-            return;
-        }
-
-        const note = `STANDARD CASE NOTE
-
-CALLER'S NAME:
-${caller.value}
-
-RELATIONSHIP TO PATIENT / TITLE:
-${relationship.value}
-
-MEDICATION:
-${medication.value}
-
-ISSUE / REASON FOR CALL:
-${issue.value}
-
-RESOLUTION / OUTCOME:
-${resolution.value}`;
-
-        await navigator.clipboard.writeText(note);
-
-        let history =
-            JSON.parse(
-                localStorage.getItem("caseNotes") || "[]"
-            );
-
-        history.unshift({
-            type: "STANDARD",
-            date: new Date().toLocaleString(),
-            note: note
-        });
-
-        localStorage.setItem(
-            "caseNotes",
-            JSON.stringify(history)
-        );
-
-        alert("Standard note copied and saved.");
-    });
-
-}
-
-// ==========================
-// CLEAR STANDARD
-// ==========================
-
-document
-.getElementById("clearStandardBtn")
-?.addEventListener("click", () => {
-
-    if (!confirm("Clear Standard Note?"))
-        return;
-
-    document.getElementById("stdCaller").value = "";
-    document.getElementById("stdRelationship").value = "";
-    document.getElementById("stdMedication").value = "";
-    document.getElementById("stdIssue").value = "";
-    document.getElementById("stdResolution").value = "";
-
-});
-
-// ==========================
-// CLEAR FORM
-// ==========================
-
-document.getElementById("clearBtn")
-.addEventListener("click", () => {
-
-
-    const copyStandardBtn =
-    document.getElementById("copyStandardBtn");
-
-
-    
