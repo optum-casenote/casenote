@@ -303,7 +303,7 @@ if (
 }
 
     // Shipping Reminder
-note += `\nShipping Reminder:\nDeliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
+note += `Shipping Reminder:\nDeliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
 // Attestation
 note += `\nI attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
 
