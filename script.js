@@ -223,7 +223,7 @@ const deliveryDate = document.getElementById("deliveryDate");
         return;
     }
 
-    let note = "CASE NOTE\n\n";
+    let note = "";
 
     note += `Spoke With: ${spokeWith.value}\n`;
 
