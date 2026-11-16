@@ -164,7 +164,30 @@ const deliveryDate = document.getElementById("deliveryDate");
     const remarks = document.getElementById("remarks");
 
     // Required Validation
+if (!obeNeeded.value) {
+    alert("OBE Needed is required.");
+    return;
+}
 
+if (!activeObe.value) {
+    alert("Active OBE is required.");
+    return;
+}
+
+if (!sameMd.value) {
+    alert("Same MD On Rx is required.");
+    return;
+}
+
+if (!restrictedState.value) {
+    alert("Restricted State field is required.");
+    return;
+}
+
+if (!remarks.value.trim()) {
+    alert("Remarks is required.");
+    return;
+}
     if (!spokeWith.value) {
         alert("Spoke With is required.");
         return;
@@ -215,13 +238,16 @@ const deliveryDate = document.getElementById("deliveryDate");
         return;
     }
 
-    if (
-        shippingMethod.value === "Other" &&
-        !otherShippingMethod.value.trim()
-    ) {
-        alert("Specify Shipping Method.");
-        return;
-    }
+ // Always copy selected shipping method
+note += `Shipping Method: ${shippingMethod.value}\n`;
+
+// If Other is selected, also copy the custom value
+if (
+    shippingMethod.value === "Other" &&
+    otherShippingMethod.value.trim()
+) {
+    note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
+}
 
     let note = "";
 
