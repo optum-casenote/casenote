@@ -289,12 +289,15 @@ if (remarks.value)
 if (growthHormone.value)
     note += `Growth Hormone Medication: ${growthHormone.value}\n`;
 
-    if (restrictedState.value)
-        note += `Shipping State CO/ID/MN/NV/RI/WV: ${restrictedState.value}\n`;
+   if (restrictedState.value)
+    note += `Shipping State CO/ID/MN/NV/RI/WV: ${restrictedState.value}\n`;
 
-   if (
+if (shippingMethod.value)
+    note += `Shipping Method: ${shippingMethod.value}\n`;
+
+if (
     shippingMethod.value === "Other" &&
-    otherShippingMethod.value
+    otherShippingMethod.value.trim()
 ) {
     note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
 }
