@@ -244,11 +244,11 @@ note += `MEDICATION COST : ${medicationCost.value}
 `;
 note += `I attest that I have verified with the patient that there are no changes to the insurance on file.`;
 
+    try {
+    await navigator.clipboard.writeText(note);
 } catch {
-
     alert("Unable to copy note.");
     return;
-
 }
 
 
