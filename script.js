@@ -223,95 +223,67 @@ const deliveryDate = document.getElementById("deliveryDate");
         return;
     }
 
-    let note = "CASE NOTE\n\n";
+    let note = "";
 
-    note += `Spoke With: ${spokeWith.value}\n`;
+note += `Spoke with: ${spokeWith.value === "Other" ? otherRelationship.value : spokeWith.value}
+`;
+note += `Office Hours (If Office-Base): ${mdOfficeHours.value || "N"}
+`;
+note += `PUNR: ${punr.value}
+`;
+note += `Delivery Date: ${deliveryDate.value}
+`;
+note += `Medication: ${medicationName.value}
+`;
+note += `Copay/ AR Bal: ${copay.value || "0"}
+`;
+note += `OBE Needed?: ${obeNeeded.value}
+`;
+note += `Is there an active OBE?: ${activeObe.value}
+`;
+note += `Is the current address the same w/ previous order: ${sameAddress.value}
+`;
 
-    if (
-        spokeWith.value === "Other" &&
-        otherRelationship.value
-    ) {
-        note += `Other Relationship: ${otherRelationship.value}\n`;
-    }
-
-    note += `Caller's Name: ${callerName.value}\n`;
-
-    if (mdOfficeHours.value)
-        note += `MD Office Hours: ${mdOfficeHours.value}\n`;
-
-    note += `PUNR: ${punr.value}\n`;
-
-    if (orderNumber.value)
-    note += `Order Number: ${orderNumber.value}\n`;
-
-    if (!medicationName.value.trim()) {
-    alert("Medication Name is required.");
-    return;
+note += `Reason for address change: ${
+    sameAddress.value === "N"
+        ? remarks.value || "NA"
+        : "NA"
 }
-    if (!medicationCost.value.trim()) {
-    alert("Medication Cost is required.");
-    return;
+`;
+
+note += `If ship to MDO, is it the same MD on the Rx: ${
+    sameMd.value || "NA"
 }
+`;
 
-if (medicationName.value)
-    note += `Medication Name: ${medicationName.value}\n`;
+note += `Is the insurance under Medicaid: ${medicaid.value}
+`;
 
-if (medicationCost.value)
-    note += `Medication Cost: ${medicationCost.value}\n`;
-
-if (deliveryDate.value)
-    note += `Delivery Date: ${deliveryDate.value}\n`;
-
-    if (copay.value)
-        note += `Copay / AR Balance: ${copay.value}\n`;
-
-    if (obeNeeded.value)
-        note += `OBE Needed: ${obeNeeded.value}\n`;
-
-    if (activeObe.value)
-        note += `Active OBE: ${activeObe.value}\n`;
-
-    if (medicaid.value)
-        note += `Insurance Under Medicaid: ${medicaid.value}\n`;
-
-    if (sameAddress.value)
-        note += `Address Same As Previous Order: ${sameAddress.value}\n`;
-
-    if (sameMd.value)
-        note += `Same MD On Rx: ${sameMd.value}\n`;
-
-    if (shippingAddress.value)
-    note += `Shipping Address: ${shippingAddress.value}\n`;
-
-if (remarks.value)
-    note += `Remarks: ${remarks.value}\n`;
-
-if (growthHormone.value)
-    note += `Growth Hormone Medication: ${growthHormone.value}\n`;
-
-   if (restrictedState.value)
-    note += `Shipping State CO/ID/MN/NV/RI/WV: ${restrictedState.value}\n`;
-
-if (shippingMethod.value)
-    note += `Shipping Method: ${shippingMethod.value}\n`;
-
-if (
-    shippingMethod.value === "Other" &&
-    otherShippingMethod.value.trim()
-) {
-    note += `Specified Shipping Method: ${otherShippingMethod.value}\n`;
+note += `Shipping Method: ${
+    shippingMethod.value === "Other"
+        ? otherShippingMethod.value
+        : shippingMethod.value
 }
+`;
 
-    // Shipping Reminder
-note += `Shipping Reminder:\nDeliveries to CO, ID, MN, NV, RI, and WV must require a signature.\n`;
-// Attestation
-note += `\nI attest that I have verified with the patient that there are no changes to the insurance on file.\n`;
+note += `Shipping Address: ${shippingAddress.value}
+`;
 
+note += `Is the medication a Growth Hormone: ${growthHormone.value}
+`;
 
+note += `Are the state under CO, ID,MN,NV,RI and WV? ${restrictedState.value}
+`;
 
-    try {
+note += `If Yes, must be SIG Req
+`;
 
-        await navigator.clipboard.writeText(note);
+note += `MEDICATION COST : ${medicationCost.value}
+
+`;
+
+note += `I attest that I have verified with the patient that there are no changes to the insurance on file.`;
+``
 
     } catch {
 
