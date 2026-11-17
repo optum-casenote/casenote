@@ -145,7 +145,10 @@ const deliveryDate = document.getElementById("deliveryDate");
     const remarks = document.getElementById("remarks");
 
     // Required Validation
-
+if (!spokeWith.value.trim()) {
+    alert("Spoke With is required.");
+    return;
+}
 
     if (!punr.value) {
         alert("PUNR is required.");
