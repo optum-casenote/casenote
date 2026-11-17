@@ -126,6 +126,7 @@ document.getElementById("attestation")
 
 copyBtn.addEventListener("click", async () => {
 
+    const spokeWith = document.getElementById("spokeWith");
     const mdOfficeHours = document.getElementById("mdOfficeHours");
     const punr = document.getElementById("punr");
    const medicationName = document.getElementById("medicationName");
@@ -256,14 +257,18 @@ note += `MEDICATION COST : ${medicationCost.value}
 `;
 
 note += `I attest that I have verified with the patient that there are no changes to the insurance on file.`;
-``
 
-    } catch {
+    try {
 
-        alert("Unable to copy note.");
-        return;
+    await navigator.clipboard.writeText(note);
 
-    }
+} catch {
+
+    alert("Unable to copy note.");
+    return;
+
+}
+
 
     let history =
         JSON.parse(
