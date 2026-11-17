@@ -71,21 +71,6 @@ historyBtn.addEventListener("click", () => {
 
 });
 
-// ==========================
-// OTHER RELATIONSHIP
-// ==========================
-
-document.getElementById("spokeWith")
-.addEventListener("change", function () {
-
-    document.getElementById(
-        "otherRelationshipContainer"
-    ).style.display =
-        this.value === "Other"
-            ? "block"
-            : "none";
-
-});
 
 // ==========================
 // OTHER SHIPPING METHOD
@@ -142,7 +127,6 @@ document.getElementById("attestation")
 copyBtn.addEventListener("click", async () => {
 
     const spokeWith = document.getElementById("spokeWith");
-    const otherRelationship = document.getElementById("otherRelationship");
     const callerName = document.getElementById("callerName");
     const mdOfficeHours = document.getElementById("mdOfficeHours");
     const punr = document.getElementById("punr");
@@ -165,10 +149,10 @@ const deliveryDate = document.getElementById("deliveryDate");
 
     // Required Validation
 
-    if (!spokeWith.value) {
-        alert("Spoke With is required.");
-        return;
-    }
+    if (!spokeWith.value.trim()) {
+    alert("Spoke With is required.");
+    return;
+}
 
     if (!callerName.value.trim()) {
         alert("Caller's Name is required.");
@@ -378,7 +362,7 @@ document.getElementById("clearBtn")
         return;
     }
 
-    document.getElementById("spokeWith").selectedIndex = 0;
+    document.getElementById("spokeWith").value = "";
     document.getElementById("callerName").value = "";
     document.getElementById("otherRelationship").value = "";
     document.getElementById("mdOfficeHours").value = "";
