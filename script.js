@@ -339,7 +339,7 @@ document.getElementById("clearBtn")
         return;
     }
 
-
+    document.getElementById("spokeWith").value = "";
     document.getElementById("mdOfficeHours").value = "";
     document.getElementById("punr").selectedIndex = 0;
     document.getElementById("medicationName").value = "";
