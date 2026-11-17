@@ -126,11 +126,8 @@ document.getElementById("attestation")
 
 copyBtn.addEventListener("click", async () => {
 
-    const spokeWith = document.getElementById("spokeWith");
-    const callerName = document.getElementById("callerName");
     const mdOfficeHours = document.getElementById("mdOfficeHours");
     const punr = document.getElementById("punr");
-    const orderNumber = document.getElementById("orderNumber");
    const medicationName = document.getElementById("medicationName");
 const medicationCost = document.getElementById("medicationCost");
 const deliveryDate = document.getElementById("deliveryDate");
@@ -149,15 +146,6 @@ const deliveryDate = document.getElementById("deliveryDate");
 
     // Required Validation
 
-    if (!spokeWith.value.trim()) {
-    alert("Spoke With is required.");
-    return;
-}
-
-    if (!callerName.value.trim()) {
-        alert("Caller's Name is required.");
-        return;
-    }
 
     if (!punr.value) {
         alert("PUNR is required.");
@@ -209,8 +197,6 @@ const deliveryDate = document.getElementById("deliveryDate");
 
     let note = "";
 
-note += `Spoke with: ${spokeWith.value === "Other" ? otherRelationship.value : spokeWith.value}
-`;
 note += `Office Hours (If Office-Base): ${mdOfficeHours.value || "N"}
 `;
 note += `PUNR: ${punr.value}
@@ -362,12 +348,9 @@ document.getElementById("clearBtn")
         return;
     }
 
-    document.getElementById("spokeWith").value = "";
-    document.getElementById("callerName").value = "";
-    document.getElementById("otherRelationship").value = "";
+
     document.getElementById("mdOfficeHours").value = "";
     document.getElementById("punr").selectedIndex = 0;
-    document.getElementById("orderNumber").value = "";
     document.getElementById("medicationName").value = "";
 document.getElementById("medicationCost").value = "";
 document.getElementById("remarks").value = "";
@@ -386,9 +369,6 @@ document.getElementById("remarks").value = "";
 
     document.getElementById("attestation").checked = false;
 
-    document.getElementById(
-        "otherRelationshipContainer"
-    ).style.display = "none";
 
     document.getElementById(
         "otherShippingContainer"
