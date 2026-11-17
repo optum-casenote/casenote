@@ -127,7 +127,6 @@ document.getElementById("attestation")
 copyBtn.addEventListener("click", async () => {
 
     const spokeWith = document.getElementById("spokeWith");
-console.log(spokeWith);
     const mdOfficeHours = document.getElementById("mdOfficeHours");
     const punr = document.getElementById("punr");
    const medicationName = document.getElementById("medicationName");
@@ -202,6 +201,8 @@ if (!spokeWith.value.trim()) {
 
     let note = "";
 
+note += `Spoke with: ${spokeWith.value}
+`;
 note += `Office Hours (If Office-Base): ${mdOfficeHours.value || "N"}
 `;
 note += `PUNR: ${punr.value}
@@ -210,7 +211,7 @@ note += `Delivery Date: ${deliveryDate.value}
 `;
 note += `Medication: ${medicationName.value}
 `;
-note += `Copay/ AR Bal: ${copay.value || "0"}
+note += `Copay/ AR Bal: ${copay.value}
 `;
 note += `OBE Needed?: ${obeNeeded.value}
 `;
@@ -218,50 +219,30 @@ note += `Is there an active OBE?: ${activeObe.value}
 `;
 note += `Is the current address the same w/ previous order: ${sameAddress.value}
 `;
-
-note += `Reason for address change: ${
-    sameAddress.value === "N"
-        ? remarks.value || "NA"
-        : "NA"
-}
+note += `Reason for address change: ${remarks.value || ""}
 `;
-
-note += `If ship to MDO, is it the same MD on the Rx: ${
-    sameMd.value || "NA"
-}
+note += `If ship to MDO, is it the same MD on the Rx: ${sameMd.value}
 `;
-
 note += `Is the insurance under Medicaid: ${medicaid.value}
 `;
-
 note += `Shipping Method: ${
     shippingMethod.value === "Other"
         ? otherShippingMethod.value
         : shippingMethod.value
 }
 `;
-
 note += `Shipping Address: ${shippingAddress.value}
 `;
-
 note += `Is the medication a Growth Hormone: ${growthHormone.value}
 `;
-
 note += `Are the state under CO, ID,MN,NV,RI and WV? ${restrictedState.value}
 `;
-
 note += `If Yes, must be SIG Req
 `;
-
 note += `MEDICATION COST : ${medicationCost.value}
 
 `;
-
 note += `I attest that I have verified with the patient that there are no changes to the insurance on file.`;
-
-    try {
-
-    await navigator.clipboard.writeText(note);
 
 } catch {
 
