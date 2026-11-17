@@ -127,6 +127,8 @@ document.getElementById("attestation")
 copyBtn.addEventListener("click", async () => {
 
     const spokeWith = document.getElementById("spokeWith");
+
+console.log("Spoke With value:", spokeWith.value);
     const mdOfficeHours = document.getElementById("mdOfficeHours");
     const punr = document.getElementById("punr");
    const medicationName = document.getElementById("medicationName");
