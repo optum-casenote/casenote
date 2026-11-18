@@ -219,8 +219,6 @@ note += `Is there an active OBE?: ${activeObe.value}
 `;
 note += `Is the current address the same w/ previous order: ${sameAddress.value}
 `;
-note += `Reason for address change: ${remarks.value || ""}
-`;
 note += `If ship to MDO, is it the same MD on the Rx: ${sameMd.value}
 `;
 note += `Is the insurance under Medicaid: ${medicaid.value}
@@ -241,6 +239,9 @@ note += `If Yes, must be SIG Req
 `;
 note += `MEDICATION COST : ${medicationCost.value}
 
+`;
+
+    note += `Reason for address change: ${remarks.value || ""}
 `;
 note += `I attest that I have verified with the patient that there are no changes to the insurance on file.`;
 
