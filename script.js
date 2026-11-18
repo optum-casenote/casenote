@@ -138,6 +138,7 @@ const deliveryDate = document.getElementById("deliveryDate");
     const medicaid = document.getElementById("medicaid");
     const sameAddress = document.getElementById("sameAddress");
     const sameMd = document.getElementById("sameMd");
+    const addressChangeReason = document.getElementById("addressChangeReason");
     const shippingAddress = document.getElementById("shippingAddress");
     const growthHormone = document.getElementById("growthHormone");
     const restrictedState = document.getElementById("restrictedState");
@@ -175,6 +176,14 @@ if (!spokeWith.value.trim()) {
         alert("Address confirmation is required.");
         return;
     }
+
+    if (
+    sameAddress.value === "No" &&
+    !addressChangeReason.value.trim()
+) {
+    alert("Reason for Address Change is required.");
+    return;
+}
 
     if (!shippingAddress.value.trim()) {
         alert("Shipping Address is required.");
@@ -219,6 +228,8 @@ note += `Is there an active OBE?: ${activeObe.value}
 `;
 note += `Is the current address the same w/ previous order: ${sameAddress.value}
 `;
+note += `Reason for address change: ${addressChangeReason.value || ""}
+`;
 note += `If ship to MDO, is it the same MD on the Rx: ${sameMd.value}
 `;
 note += `Is the insurance under Medicaid: ${medicaid.value}
@@ -241,8 +252,9 @@ note += `MEDICATION COST : ${medicationCost.value}
 
 `;
 
-    note += `Reason for address change: ${remarks.value || ""}
+note += `Remark:${remarks.value ? " " + remarks.value : ""}
 `;
+
 note += `I attest that I have verified with the patient that there are no changes to the insurance on file.`;
 
     try {
@@ -358,6 +370,7 @@ document.getElementById("remarks").value = "";
     document.getElementById("shippingMethod").selectedIndex = 0;
     document.getElementById("shippingAddress").value = "";
     document.getElementById("otherShippingMethod").value = "";
+    document.getElementById("addressChangeReason").value = "";
 
     document.getElementById("attestation").checked = false;
 
