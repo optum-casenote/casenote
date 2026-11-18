@@ -89,6 +89,25 @@ document.getElementById("shippingMethod")
 });
 
 // ==========================
+// ADDRESS CHANGE REASON
+// ==========================
+
+document.getElementById("sameAddress")
+.addEventListener("change", function () {
+
+    const reasonContainer =
+        document.getElementById(
+            "addressChangeContainer"
+        );
+
+    reasonContainer.style.display =
+        this.value === "No"
+            ? "block"
+            : "none";
+
+});
+
+// ==========================
 // CURRENCY FORMAT
 // ==========================
 
@@ -371,13 +390,13 @@ document.getElementById("remarks").value = "";
     document.getElementById("shippingAddress").value = "";
     document.getElementById("otherShippingMethod").value = "";
     document.getElementById("addressChangeReason").value = "";
+    document.getElementById("addressChangeReason").value = "";
+    document.getElementById("addressChangeContainer").style.display = "none";
 
     document.getElementById("attestation").checked = false;
 
 
-    document.getElementById(
-        "otherShippingContainer"
-    ).style.display = "none";
+   
 
     copyBtn.disabled = true;
 
